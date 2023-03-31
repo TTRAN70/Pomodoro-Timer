@@ -64,13 +64,15 @@ export default function Timer() {
 
   const timing = () => {
     if (mode == "Session") {
-        intervalId = setInterval((duration) => {
-          var minutes = parseInt(duration / 60, 10);
-          var seconds = parseInt(duration % 60, 10);
+      var timeleft = timerSeconds;
+        intervalId = setInterval(() => {
+          var minutes = parseInt(timeleft / 60, 10);
+          var seconds = parseInt(timeleft % 60, 10);
           minutes = minutes < 10 ? "0" + minutes : minutes;
           seconds = seconds < 10 ? "0" + seconds : seconds;
           setDisplay(prev => minutes + ":" + seconds);
-        }, 1000, timerSeconds);
+          timeleft -= 1;
+        }, 1000);
     }
   }
 
@@ -80,6 +82,7 @@ export default function Timer() {
       timing();
     }
     else {
+      setTimerSecond(prev => (parseInt(display.substring(0,2), 10) * 60) + parseInt(display.substring(3, display.length), 10));
       clearInterval(intervalId);
     }
   }
