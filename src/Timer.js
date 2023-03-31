@@ -1,6 +1,7 @@
 import React from "react";
 import "./Timer.css"
 import React, { useState } from "react";
+var intervalId;
 
 export default function Timer() {
 
@@ -9,17 +10,21 @@ export default function Timer() {
   const [session, setSession] = useState(25);
   const [toggle, setToggle] = useState(false);
   const [mode, setMode] = useState("Session");
+  const [timerSeconds, setTimerSecond] = useState(1500);
+  const [breakSeconds, setBreakSeconds] = useState(300);
 
   const sesh = (event) => {
     if(!toggle) {
        if (event.target.value == "-" && session >= 2) {
-         setSession(prev => prev - 1);
+          setSession(prev => prev - 1);
+          setTimerSecond(prev => (session-1) * 60);
          if (mode == "Session") {
-         setDisplay(prev => session-1 + ":00");
+          setDisplay(prev => session-1 + ":00");
         }
        }
        else if (event.target.value == "+" && session <= 59) {
-        setSession(prev => prev + 1);
+          setSession(prev => prev + 1);
+          setTimerSecond(prev => (session+1) * 60);
         if (mode == "Session") {
           setDisplay(prev => session+1 + ":00");
          }
@@ -30,13 +35,15 @@ export default function Timer() {
   const breaking = (event) => {
     if(!toggle) {
       if (event.target.value == "-" && breakLength >= 2) {
-        setBreak(prev => prev - 1);
+          setBreak(prev => prev - 1);
+          setBreakSeconds(prev => (breakLength-1) * 60);
         if (mode == "Break") {
-        setDisplay(prev => breakLength-1 + ":00");
+          setDisplay(prev => breakLength-1 + ":00");
         }
       }
       else if (event.target.value == "+" && breakLength <= 59) {
-       setBreak(prev => prev + 1);
+        setBreak(prev => prev + 1);
+        setBreakSeconds(prev => (breakLength+1) * 60);
        if (mode == "Break") {
         setDisplay(prev => breakLength+1 + ":00");
         }
@@ -50,14 +57,30 @@ export default function Timer() {
     setSession(25);
     setToggle(false);
     setMode("Session");
+    setTimerSecond(1500);
+    setBreakSeconds(300);
+    clearInterval(intervalId);
   }
 
   const timing = () => {
     if (mode == "Session") {
-      setToggle(prev => !toggle);
-      if (toggle) {
-        
-      }
+        intervalId = setInterval((duration) => {
+          var minutes = parseInt(duration / 60, 10);
+          var seconds = parseInt(duration % 60, 10);
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          setDisplay(prev => minutes + ":" + seconds);
+        }, 1000, timerSeconds);
+    }
+  }
+
+  const pause = () => {
+    setToggle(prev => !toggle);
+    if (!toggle) {
+      timing();
+    }
+    else {
+      clearInterval(intervalId);
     }
   }
 
@@ -81,7 +104,7 @@ export default function Timer() {
           <button onClick={e => sesh(e)} value="+" className="changeTime">+</button>
         </div>
         <div className="operate">
-          <button onClick={() => timing()} className="start">Start</button>
+          <button onClick={() => pause()} className="start">Start</button>
           <button onClick={() => reset()} className="reset">Reset</button>
         </div>
       </div>
