@@ -145,22 +145,27 @@ export default function Timer() {
         Pomodoro Timer
       </div>
       <div className="display">
+        <div className="checkDisplay">
+          {mode == "Session" ? "Session" : "Break"}
+        </div>
         {display}
       </div>
       <div className="controls">
-        <div className="break">
-          <button onClick={e => breaking(e)} value="-" className="changeTime">-</button>
-          {breakLength}
-          <button onClick={e => breaking(e)} value="+" className="changeTime">+</button>
-        </div>
-        <div className="session">
-          <button onClick={e => sesh(e)} value="-" className="changeTime">-</button>
-          {session}
-          <button onClick={e => sesh(e)} value="+" className="changeTime">+</button>
+        <div className="time">
+          <div className="break">
+            <button onClick={e => breaking(e)} value="-" className="changeTime minus">-</button>
+            {breakLength}
+            <button onClick={e => breaking(e)} value="+" className="changeTime plus">+</button>
+          </div>
+          <div className="session">
+            <button onClick={e => sesh(e)} value="-" className="changeTime minus">-</button>
+            {session}
+            <button onClick={e => sesh(e)} value="+" className="changeTime plus">+</button>
+          </div>
         </div>
         <div className="operate">
-          <button onClick={() => pause()} className="start">Start</button>
-          <button onClick={() => reset()} className="reset">Reset</button>
+          <button onClick={() => pause()} className="start">START</button>
+          <button onClick={() => reset()} className="reset">RESET</button>
         </div>
       </div>
     </div>
