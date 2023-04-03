@@ -3,6 +3,7 @@ import "./Timer.css"
 import React, { useState } from "react";
 var intervalId;
 var mode = "Session";
+import { RiRestartLine } from "react-icons/ri";
 
 export default function Timer() {
 
@@ -165,7 +166,7 @@ export default function Timer() {
         </div>
         <div className="operate">
           <button onClick={() => pause()} className="start">START</button>
-          <button onClick={() => reset()} className="reset">RESET</button>
+          <button onClick={() => reset()} className="reset"><RiRestartLine /></button>
         </div>
       </div>
     </div>
