@@ -8,14 +8,16 @@
 
 .title {
   font-size: 5rem;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   user-select: none;
+  font-family: 'Kanit', sans-serif;
+  color: white;
 }
 
 .display {
   border: 5px solid black;
   padding: 30px 120px 30px 120px;
-  font-size: 5rem;
+  font-size: 9rem;
   display: flex;
   justify-content: center;
   flex-flow: column wrap;
@@ -23,12 +25,13 @@
   background-color: #FD4556;
   color: #FFFBF5;
   user-select: none;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .breakDisplay {
   border: 5px solid black;
   padding: 30px 120px 26px 120px;
-  font-size: 5rem;
+  font-size: 9rem;
   display: flex;
   justify-content: center;
   flex-flow: column wrap;
@@ -36,6 +39,7 @@
   background-color: #364966;
   color: white;
   user-select: none;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .checkDisplay {
@@ -57,16 +61,17 @@
   position: absolute;
   font-size: 1.5rem;
   user-select: none;
+  font-family: 'Kanit', sans-serif;
 }
 
 .sesh {
   top: 50px;
-  right: 55px;
+  right: 47px;
 }
 
 .breaking {
   top: 50px;
-  left: 55px;
+  left: 53px;
 }
 
 .changeTime {
@@ -86,6 +91,7 @@
 .break, .session {
   font-size: 2rem;
   user-select: none;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .minus {
@@ -115,6 +121,7 @@
   color: white;
   border: 3px solid black;
   box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.3);
+  font-family: 'Anton', sans-serif;
 }
 
 .pause {
@@ -125,6 +132,7 @@
   color: white;
   border: 3px solid black;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.089);
+  font-family: 'Kanit', sans-serif;
 }
 
 .pause:hover {

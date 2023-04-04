@@ -147,11 +147,12 @@ export default function Timer() {
   const playSound = () => {
     const audio = document.getElementById("Audio");
     audio.currentTime = 0;
-    audio.volume = 0.5;
+    audio.volume = 0.3;
     audio.play();
     setTimeout(() => {
       audio.pause();
     }, 3000);
+    audio.currentTime = 0;
   };
 
   return (
