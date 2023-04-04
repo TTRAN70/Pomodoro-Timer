@@ -81,6 +81,8 @@ export default function Timer() {
     setTimerSecond(1500);
     setBreakSeconds(300);
     clearInterval(intervalId);
+    const audio = document.getElementById("Audio");
+    audio.currentTime = 0;
   }
 
   const timing = () => {
@@ -94,6 +96,7 @@ export default function Timer() {
           if (timeleft <= 0) {
             mode = "Break";
             clearInterval(intervalId);
+            playSound();
             pause();
           }
           setDisplay(prev => minutes + ":" + seconds);
@@ -110,6 +113,7 @@ export default function Timer() {
         if (timeleft <= 0) {
           mode = "Session";
           clearInterval(intervalId);
+          playSound();
           pause();
         }
         setDisplay(prev => minutes + ":" + seconds);
@@ -140,8 +144,19 @@ export default function Timer() {
     }
   }
 
+  const playSound = () => {
+    const audio = document.getElementById("Audio");
+    audio.currentTime = 0;
+    audio.volume = 0.5;
+    audio.play();
+    setTimeout(() => {
+      audio.pause();
+    }, 3000);
+  };
+
   return (
     <div className="timerWrap">
+      <audio src="https://soundboardguy.com/wp-content/uploads/2022/03/AUUGHHH_TikTok_Sound_getmp3.pro_.mp3" id="Audio"></audio>
       <div className="title">
         Pomodoro Timer
       </div>
