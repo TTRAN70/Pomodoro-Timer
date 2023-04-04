@@ -145,7 +145,7 @@ export default function Timer() {
       <div className="title">
         Pomodoro Timer
       </div>
-      <div className="display">
+      <div className={mode == "Session" ? "display" : "breakDisplay"}>
         <div className="checkDisplay">
           {mode == "Session" ? "Session" : "Break"}
         </div>
@@ -153,6 +153,8 @@ export default function Timer() {
       </div>
       <div className="controls">
         <div className="time">
+          <div className="sesh">Session</div>
+          <div className="breaking">Break</div>
           <div className="break">
             <button onClick={e => breaking(e)} value="-" className="changeTime minus">-</button>
             {breakLength}
@@ -165,7 +167,7 @@ export default function Timer() {
           </div>
         </div>
         <div className="operate">
-          <button onClick={() => pause()} className="start">START</button>
+          <button onClick={() => pause()} className={!toggle ? "start" : "pause"}>{!toggle ? "START" : "TIMER ACTIVE"}</button>
           <button onClick={() => reset()} className="reset"><RiRestartLine /></button>
         </div>
       </div>
