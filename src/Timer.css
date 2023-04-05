@@ -66,7 +66,7 @@
 
 .sesh {
   top: 50px;
-  right: 47px;
+  right: 45px;
 }
 
 .breaking {
@@ -81,6 +81,7 @@
   color: white;
   border: 3px solid black;
   user-select: none;
+  cursor: pointer;
 }
 
 .changeTime:hover {
@@ -114,7 +115,6 @@
 }
 
 .start {
-  margin-top: -86px;
   font-size: 2.5rem;
   padding: 10px 70px 10px 70px;
   background-color: #FD4556;
@@ -122,17 +122,18 @@
   border: 3px solid black;
   box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.3);
   font-family: 'Anton', sans-serif;
+  cursor: pointer;
 }
 
 .pause {
-  margin-top: -86px;
   font-size: 1.5rem;
-  padding: 20px 51px 17px 51px;
+  padding: 20px 38px 25px 40px;
   background-color: black;
   color: white;
   border: 3px solid black;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.089);
   font-family: 'Kanit', sans-serif;
+  cursor: pointer;
 }
 
 .pause:hover {
@@ -152,9 +153,43 @@
   color: white;
   border: 3px solid black;
   box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
 }
 
 .reset:hover {
   background-color: rgb(255, 221, 221);
   color: black;
+}
+
+@media (max-width: 600px) {
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .timerWrap {
+    margin-top: 0px;
+  }
+
+  .display, .breakDisplay {
+    padding: 30px 120px 30px 120px;
+    font-size: 7rem;
+  }
+
+  .break {
+    margin-bottom: 5px;
+  }
+
+  .start {
+    font-size: 2rem;
+  }
+
+  .pause {
+    font-size: 1.2rem;
+    padding: 20px 45px 20px 45px;
+  }
+
+  .breaking {
+    top: 0;
+    left: 70px;
+  }
 }
