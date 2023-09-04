@@ -1,4 +1,4 @@
-# FreeCodeCamp-Pomodoro-Timer
+Pomodoro-Timer
 
 Press the Start Button to start the Timer.
 The Plus (+) and Minus (-) buttons are used to increment and decrement the timer.
